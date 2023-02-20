@@ -1,0 +1,51 @@
+interface ButtonProps{
+    color?: 'primary' | 'secundary' | 'danger'| 'seuccess'; aqui estão as propriedades do Button
+}
+
+export function Button({color = 'primary'}:ButtonProps){  caso o button não tenha nenhuma cor sera usada a cor primary
+
+    return(
+        <>
+        <ButtonContainer color={color}>Send</ButtonContainer>
+        </>
+    )
+}
+
+------------------
+import styled from "styled-components";
+
+export type ButtonVariant =  'primary' | 'secundary' | 'danger'| 'seuccess'; os tipos que sera passado para cada botão
+
+
+interface ButtonContainerProps {
+    variant: ButtonVariant; os tipos são ar,azenados dentro da interface
+}
+
+export const ButtonContainer = styled.button<ButtonContainerProps>` as props do botão são passadas como um elemento html
+para que possamos alterar uma por uma
+    width: 100px;
+    height: 40px;
+    color: red;
+`
+
+${props => {as props estão vindo do variant do button, que seria primary...
+        return `background-color: ${buttonVariants[props.variant]}` buttonVariants ata correndo pelo objeto pegando cada
+        props
+    }}
+`
+
+
+React-router
+serve para uma spa renderizando uma pagina na mesma pagina 
+ <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/history" element={<History />} />
+        </Routes>
+
+o routes vai englobar todas as rotas da página 
+
+para que o toda a pagina seja renderizada é preciso dentro do app exportar o BrowserRouter englobando o componente router
+
+
+componetes como BrowserRouter e themeProvider são context providers não possuem efeito visual 
+mas produzem informações para os componentes estão dentro dele trazendo infomações de fora para eles
